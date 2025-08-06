@@ -1,0 +1,197 @@
+.timeline-container {
+  padding: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.timeline-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #2c7a4e;
+}
+
+.timeline-wrapper {
+  position: relative;
+  overflow-x: auto;
+  border: 1px solid #90d4a8;
+  border-radius: 4px;
+  background-color: #f0f9f1;
+}
+
+.timeline-header {
+  position: relative;
+  height: 32px;
+  background-color: #e0f2e5;
+  border-bottom: 1px solid #90d4a8;
+}
+
+.month-marker {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-left: 1px solid #90d4a8;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+}
+
+.month-label {
+  font-size: 12px;
+  color: #2c7a4e;
+  white-space: nowrap;
+}
+
+.timeline-content {
+  position: relative;
+}
+
+.timeline-item {
+  position: absolute;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #2c7a4e;
+  background-color: #c6efd4;
+  display: flex;
+  align-items: center;
+  cursor: default;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.timeline-item:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 6px 12px rgba(44, 122, 78, 0.3);
+  background-color: #a8e6bf;
+  z-index: 10;
+}
+
+.item-content {
+  padding: 4px 8px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.item-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  font-size: 14px;
+  color: #2c7a4e;
+  font-weight: 500;
+}
+
+.item-dates {
+  font-size: 12px;
+  color: #388659;
+  margin-left: 4px;
+  white-space: nowrap;
+}
+
+/* Tooltip */
+.tooltip-content {
+  max-width: 250px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #f0f9f1;
+  border: 1px solid #90d4a8;
+  box-shadow: 0 2px 10px rgba(44, 122, 78, 0.2);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #2c7a4e;
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  z-index: 1000;
+}
+
+.tooltip-content[data-state='delayed-open'] {
+  animation-name: slideUpAndFade;
+}
+
+.tooltip-arrow {
+  fill: #f0f9f1;
+}
+
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.zoom-button {
+  padding: 6px 12px;
+  border: 1px solid #90d4a8;
+  background-color: #e0f2e5;
+  color: #2c7a4e;
+  margin-right: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.zoom-button:hover {
+  background-color: #c6efd4;
+}
+
+.zoom-level {
+  font-size: 14px;
+  color: #2c7a4e;
+  margin-left: 8px;
+}
+
+.drag-handle {
+  position: absolute;
+  top: 0;
+  width: 8px;
+  height: 100%;
+  cursor: ew-resize;
+  background-color: rgba(44, 122, 78, 0.2);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.left-handle {
+  left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.right-handle {
+  right: 0;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.timeline-item:hover .drag-handle {
+  opacity: 1;
+}
+
+.item-edit-input {
+  width: 100%;
+  background-color: #f0f9f1;
+  border: none;
+  padding: 2px 4px;
+  font-size: 14px;
+  color: #2c7a4e;
+  outline: none;
+  border-radius: 2px;
+}
